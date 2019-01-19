@@ -33,6 +33,7 @@ class Blog extends Component {
         this.setState({selectedPostId : id})
     }
 
+
     render () {
 
         const posts = this.state.post
