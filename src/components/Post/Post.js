@@ -5,7 +5,7 @@ import './Post.css';
 
 const post = (props) => {
  
-    console.log(props);
+    
 
  return(
         <article className="Post" onClick={props.click}>
