@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom'
+//import {Redirect} from 'react-router-dom'
 
 import './NewPost.css';
 
@@ -23,23 +23,26 @@ class NewPost extends Component {
             author : this.state.author
         }
         axios.post('/posts',post)
-             .then(res => console.log(res));   
+             .then(res =>{ 
+                 console.log(res)
+                 this.props.history.push("/")
+                });   
              
         this.setState({redirect:true});
     }
 
     render () {
 
-        let go = null;
+        // let go = null;
 
-        if(this.state.redirect === true){
-            go = <Redirect to="/" from="/new-post" />
-        }
+        // if(this.state.redirect === true){
+        //     go = <Redirect to="/" from="/new-post" />
+        // }
 
         return (
             
             <div className="NewPost">
-                {go}
+                {/* {go} */}
                 <h1>Add a Post</h1>
                 <label>Title</label>
                 <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})} />
