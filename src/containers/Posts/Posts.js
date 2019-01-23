@@ -12,8 +12,8 @@ import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component {
     state = {
-        posts: [],
-        loginState:false
+        posts: []
+        //loginState:false
     }
 
     componentDidMount () {
@@ -39,17 +39,17 @@ class Posts extends Component {
     }
 
     postSelectedHandler = (id) => {
-        this.props.history.push({pathname:'/'+id});
+        this.props.history.push({pathname:'/posts/'+id});
     }
 
-    makeItLogin =()=>{
-        this.setState(
-            prevState => ({
-                loginState: !prevState.loginState
-            })
-        );
+    // makeItLogin =()=>{
+    //     this.setState(
+    //         prevState => ({
+    //             loginState: !prevState.loginState
+    //         })
+    //     );
 
-    }
+    // }
     
     render () {
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
@@ -67,20 +67,21 @@ class Posts extends Component {
             });
         }
 
-        let loginText = "";
-        if(this.state.loginState){
-            loginText="LogOut";
-        } else {
-            loginText="LogIn";
-        }
+        // let loginText = "";
+        // if(this.state.loginState){
+        //     loginText="LogOut";
+        // } else {
+        //     loginText="LogIn";
+        // }
 
         return (
             <div>
                 <section className="Posts">
                     {posts}
                 </section>
-                <button style={{marginLeft:'50%'}} onClick={this.makeItLogin}>{loginText}</button>
-                {this.state.loginState ? <Route path="/:id" exact component={FullPost} /> : null} 
+                {/* <button style={{marginLeft:'50%'}} onClick={this.makeItLogin}>{loginText}</button> */}
+                {/* {this.state.loginState ? <Route path="/:id" exact component={FullPost} /> : null}  */}
+                <Route path="/posts/:id" exact strict component={FullPost} /> 
             </div>
         );
     }
